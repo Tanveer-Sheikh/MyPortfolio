@@ -53,7 +53,7 @@
                     </div>
 
                     <div class="text-center my-3">
-                        <a href="myprojects.html"  style="text-decoration: none;"
+                        <a href="myprojects.html" target="_blank" style="text-decoration: none;"
                             class="text-white fw-bold">
                             <i class="fas fa-code"></i> View Github Projects
                         </a>
@@ -72,10 +72,25 @@
                         <span class="badge">🔬 Research Scholar</span>
                     </div>
                 </div>
+                <div class="profile-wrapper" id="profileWrapper">
+  <!-- Glowing background effect -->
+  <div class="light-glow"></div>
 
-                 <div class="profile-image-container">
-                    <img src="formal.jpg" alt="Profile" class="profile-image">
-                </div>
+  <!-- Profile image -->
+  <div class="profile-image-container" id="profileContainer">
+    <img src="formal.jpg" alt="Profile" class="profile-image">
+  </div>
+
+  <!-- Hanging bulb -->
+  <div class="bulb-rope-container" id="bulbRope">
+    <div class="rope"></div>
+    <i id="bulb" class="fas fa-lightbulb bulb-icon"></i>
+  </div>
+</div>
+
+
+
+
             </div>
         </div>
     </section>
@@ -354,7 +369,7 @@
                     <div class="skill-category">
                         <h3><i class="fas fa-trophy"></i> Academic Excellence</h3>
                         <ul class="achievement-list">
-                            <li>GATE 2023 Qualified with a score of 650+</li>
+                            <li>GATE 20234Qualified with a score of 650+</li>
                             <li>Top 1.37% nationwide among 1,00,000+ candidates</li>
                             <li>Secured admission at NIT Warangal (CSE)</li>
                             <li>Published Research Paper in NLP Systems</li>
@@ -439,7 +454,7 @@
             <footer
                 style="background: var(--bg-dark); color: var(--text-white); text-align: center; padding: var(--spacing-lg) 0;">
                 <div class="container">
-                    <p>&copy; 2024 Tanveer Sheikh. All rights reserved.</p>
+                    <p>&copy; 2025 Tanveer Sheikh. All rights reserved.</p>
                     <p style="margin-top: var(--spacing-xs); color: var(--text-light);">
                         Built with passion for technology and innovation
                     </p>
@@ -475,6 +490,17 @@
                         }
                     });
                 });
+ const bulb = document.getElementById("bulb");
+  const profile = document.getElementById("profileContainer");
+  const bulbRope = document.getElementById("bulbRope");
+  const wrapper = document.getElementById("profileWrapper");
+
+  bulb.addEventListener("click", () => {
+    profile.classList.toggle("lit");
+    bulb.classList.toggle("bulb-on");
+    bulbRope.classList.toggle("bulb-on");
+    wrapper.classList.toggle("lit"); // Triggers the glow
+  });
             </script>
 </body>
 

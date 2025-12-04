@@ -9,13 +9,344 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Monoton&family=ZCOOL+KuaiLe&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #0066cc;
+            --accent-color: #ff6b35;
+            --bg-dark: #0a0e27;
+            --bg-primary: #1a1f3a;
+            --bg-secondary: #2a2f4a;
+            --text-white: #ffffff;
+            --text-light: #b8c5d6;
+            --text-secondary: #8892a6;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --border-radius: 12px;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.5rem;
+            --font-size-2xl: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-primary) 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .hero-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details p {
+            margin: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .contact-details i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .badge {
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary-color);
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image-container {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-period {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievement-list li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .achievement-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .social-section {
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+            padding: 4rem 0;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-item {
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-white);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .social-item i {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background: var(--bg-dark);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-
-    <!-- ===== HEADER ===== -->
     <header>
         <nav class="container">
             <div class="logo">Tanveer Sheikh</div>
@@ -30,275 +361,207 @@
         </nav>
     </header>
 
-    <!-- ===== HERO SECTION ===== -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="highlighted-name">Tanveer Sheikh</span>
-                    </h1>
+                    <h1 class="hero-title">Tanveer Sheikh</h1>
                     <p class="hero-subtitle">M.Tech in Computer Science, NIT Warangal</p>
                     <p class="hero-description">
-                        Computer Science Engineer passionate about scalable systems and AI-driven innovation.<br>
-                        Guided by curiosity and precision, I engineer robust software solutions that deliver measurable
-                        impact.
+                        Computer Science Engineer passionate about AI/ML, Full-Stack Development, and scalable systems.
+                        Building innovative solutions with deep learning, database optimization, and enterprise software.
                     </p>
 
-                    <div class="contact-details text-white text-center">
+                    <div class="contact-details">
                         <p><i class="fas fa-envelope"></i> <a href="mailto:tanveershaikh6808@gmail.com"
-                                style="text-decoration: none;" class="text-white">tanveershaikh6808@gmail.com</a></p>
+                                style="text-decoration: none; color: var(--text-white);">tanveershaikh6808@gmail.com</a></p>
                         <p><i class="fas fa-phone"></i> +91 6265446699</p>
                         <p><i class="fas fa-map-marker-alt"></i> Indore, India</p>
                     </div>
 
-                    <div class="text-center my-3">
-                        <a href="myprojects.html"  style="text-decoration: none;"
-                            class="text-white fw-bold">
-                            <i class="fas fa-code"></i> View Github Projects
-                        </a>
-                    </div>
-
-                    <div class="fixed-bottom bg-dark text-white py-2 text-center shadow-sm">
-                        <a href="GoogleResume.pdf" download="Tanveer_Resume" target="_blank"
-                            style="text-decoration: none;" class="text-white fw-bold">
-                            <i class="fas fa-file-download"></i> Download Resume
-                        </a>
-                    </div>
                     <div class="badges">
-                        <span class="badge">🎓 M.Tech Graduate</span>
-                        <span class="badge">💻 Software Developer</span>
-                        <span class="badge">🚀 Tech Enthusiast</span>
+                        <span class="badge">🎓 M.Tech NIT Warangal</span>
+                        <span class="badge">💻 Software Engineer</span>
+                        <span class="badge">🚀 AI/ML Enthusiast</span>
                         <span class="badge">🔬 Research Scholar</span>
                     </div>
                 </div>
-                <div class="profile-wrapper" id="profileWrapper">
-  <!-- Glowing background effect -->
-  <div class="light-glow"></div>
-
-  <!-- Profile image -->
-  <div class="profile-image-container" id="profileContainer">
-    <img src="formal.jpg" alt="Profile" class="profile-image">
-  </div>
-
-  <!-- Hanging bulb -->
-  <div class="bulb-rope-container" id="bulbRope">
-    <div class="rope"></div>
-    <i id="bulb" class="fas fa-lightbulb bulb-icon"></i>
-  </div>
-</div>
-
-
-
-
+                <div class="profile-wrapper">
+                    <div class="profile-image-container">
+                        <img src="formal.jpg" alt="Profile" class="profile-image">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== MAIN CONTENT ===== -->
     <main class="main-content">
         <div class="container">
-
-            <!-- ===== ABOUT SECTION ===== -->
             <section id="about" class="section">
                 <h2 class="section-title">About Me</h2>
                 <div class="card" style="padding: var(--spacing-xl); text-align: center;">
                     <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-md);">
-                        I am a dedicated M.Tech Computer Science graduate from NIT Warangal with a passion for
-                        technology and innovation. My journey in computer science has equipped me with strong
-                        analytical skills and hands-on experience in various programming languages and frameworks.
+                        I am a dedicated M.Tech Computer Science graduate from NIT Warangal with a CGPA of 7.95, 
+                        currently interning as a Software Engineer at Intel Corporation. My expertise spans AI/ML, 
+                        full-stack development, and system optimization with a strong foundation in data structures 
+                        and algorithms.
                     </p>
                     <p style="color: var(--text-secondary);">
-                        I thrive on solving complex problems and building efficient solutions that make a difference.
-                        My goal is to contribute to cutting-edge projects that push the boundaries of technology
-                        and create meaningful impact in the digital world.
+                        I thrive on building efficient, scalable solutions that push technological boundaries. From 
+                        optimizing telemetry pipelines at Intel to developing multimodal AI systems, I bring both 
+                        research depth and practical engineering skills to every project.
                     </p>
                 </div>
             </section>
 
-            <!-- ===== SKILLS SECTION ===== -->
             <section id="skills" class="section">
                 <h2 class="section-title">Skills & Technologies</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
                         <h3><i class="fas fa-code"></i> Programming Languages</h3>
                         <div class="skill-tags">
-                            <span class="tag tag-secondary">Python</span>
-                            <span class="tag tag-secondary">Java</span>
-                            <span class="tag tag-secondary">C++</span>
-                            <span class="tag tag-secondary">JavaScript</span>
-                            <span class="tag tag-secondary">C#</span>
-                            <span class="tag tag-secondary">C</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">C</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+                        <h3><i class="fas fa-tools"></i> Developer Tools</h3>
                         <div class="skill-tags">
-                            <span class="tag tag-secondary">React</span>
-                            <span class="tag tag-secondary">HTML5</span>
-                            <span class="tag tag-secondary">CSS3</span>
-                            <span class="tag tag-secondary">MS SQL</span>
-                            <span class="tag tag-secondary">SSRS</span>
+                            <span class="tag">Visual Studio/Code</span>
+                            <span class="tag">Github</span>
+                            <span class="tag">Postman</span>
+                            <span class="tag">Jupyter</span>
+                            <span class="tag">SSRS</span>
+                            <span class="tag">MS Word</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3><i class="fas fa-database"></i> Data & Analytics</h3>
+                        <h3><i class="fas fa-brain"></i> AI/ML & Frameworks</h3>
                         <div class="skill-tags">
-                            <span class="tag tag-secondary">Machine Learning</span>
-                            <span class="tag tag-secondary">Data Science</span>
-                            <span class="tag tag-secondary">SQL</span>
-                            <span class="tag tag-secondary">Pandas</span>
-                            <span class="tag tag-secondary">NumPy</span>
-                            <span class="tag tag-secondary">TensorFlow</span>
+                            <span class="tag">LangChain</span>
+                            <span class="tag">OpenAI</span>
+                            <span class="tag">ChromaDB</span>
+                            <span class="tag">CNN-LSTM</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">NLP</span>
                         </div>
                     </div>
 
                     <div class="skill-category">
-                        <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                        <h3><i class="fas fa-database"></i> Core Coursework</h3>
                         <div class="skill-tags">
-                            <span class="tag tag-secondary">Git</span>
-                            <span class="tag tag-secondary">Docker</span>
-                            <span class="tag tag-secondary">Linux</span>
-                            <span class="tag tag-secondary">VS Code</span>
-                            <span class="tag tag-secondary">Excel</span>
+                            <span class="tag">DSA</span>
+                            <span class="tag">Computer Architecture</span>
+                            <span class="tag">Compiler Design</span>
+                            <span class="tag">Operating System</span>
+                            <span class="tag">DBMS</span>
+                            <span class="tag">Data Mining</span>
+                            <span class="tag">System Design</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ===== PROJECTS SECTION ===== -->
             <section id="projects" class="section">
-                <h2 class="section-title">Projects & Experience</h2>
+                <h2 class="section-title">Experience & Projects</h2>
                 <div class="projects-grid">
-
-                    <!-- Experience Project: MXPERTZ -->
                     <div class="project-card">
                         <div class="project-content">
                             <h3 class="project-title">Intel Corporation – Software Engineering Intern</h3>
-                            <p class="project-period">May 2025 – Present | Bangalore, India</p>
+                            <p class="project-period">Jun 2025 – Present | Bangalore, India</p>
                             <p class="project-description">
-                                Optimized telemetry data pipelines by converting verbose XML structures into
-                                FlatBuffers, improving parsing speed by 82%. Refactored components for modular design
-                                and enhanced memory throughput on Linux using C++ and Python.
+                                Engineered a telemetry driver extension on Intel's internal framework for reliable system 
+                                diagnostics. Designed a high-efficiency pipeline converting XML to FlatBuffers, achieving 
+                                82% parsing speed improvement and reduced memory footprint. Automated end-to-end driver 
+                                testing workflows using Python, significantly improving test efficiency and engineering productivity.
                             </p>
                             <div class="skill-tags">
-                                <span class="tag tag-secondary">C++</span>
-                                <span class="tag tag-secondary">Python</span>
-                                <span class="tag tag-secondary">FlatBuffers</span>
-                                <span class="tag tag-secondary">Linux</span>
-                                <span class="tag tag-secondary">Telemetry</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">FlatBuffers</span>
+                                <span class="tag">Telemetry</span>
+                                <span class="tag">Automation</span>
+                                <span class="tag">Excel Reporting</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-content">
-                            <h3 class="project-title">Enterprise Application Suite – MXPERTZ</h3>
-                            <p class="project-period">Jul 2023 – Jan 2024 | Lead Software Developer</p>
+                            <h3 class="project-title">Multimodal RAG Chatbot</h3>
+                            <p class="project-period">Deep Learning Project</p>
                             <p class="project-description">
-                                Spearheaded the development of dynamic enterprise software solutions, managing a team of
-                                5–6 developers.
-                                Successfully delivered 7 high-impact projects by aligning technical direction with
-                                client expectations.
+                                Developed a multimodal RAG system parsing PDFs using OCR, images, and tables through 
+                                advanced NLP pipelines. Integrated OpenAI LLMs with embedding-based semantic retrieval 
+                                using ChromaDB for accurate multimodal information extraction. Implemented end-to-end 
+                                LangChain RAG pipeline supporting multimodal embeddings and vector search for reliable, 
+                                context-aware responses.
                             </p>
                             <div class="skill-tags">
-                                <span class="tag tag-secondary">ASP.NET</span>
-                                <span class="tag tag-secondary">Flutter</span>
-                                <span class="tag tag-secondary">MS SQL</span>
-                                <span class="tag tag-secondary">SSRS Reports</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">LangChain</span>
+                                <span class="tag">OpenAI</span>
+                                <span class="tag">ChromaDB</span>
+                                <span class="tag">OCR</span>
+                                <span class="tag">NLP</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Training Program Project: ZENSAR -->
                     <div class="project-card">
                         <div class="project-content">
-                            <h3 class="project-title">Secure Web Services – ZENSAR Training</h3>
-                            <p class="project-period">Dec 2022 – Mar 2023 | Student Trainee</p>
+                            <h3 class="project-title">Multimodal Biometric Authentication (Voice + Iris)</h3>
+                            <p class="project-period">Research Project</p>
                             <p class="project-description">
-                                Engineered secure full-stack applications with robust API integration and protection
-                                against brute-force and SQL injection attacks.
-                                Delivered responsive user interfaces integrated with backend services.
+                                Designed a multimodal biometric system integrating voice (MFCC + Delta) and iris features 
+                                using CNN-LSTM architecture with dropout for robust generalization. Built CNN-based spatial 
+                                encoders for iris images and LSTM-based temporal models for voice signals producing 
+                                discriminative embeddings. Achieved up to 90% identity verification accuracy through 
+                                feature-level fusion, outperforming unimodal baselines.
                             </p>
                             <div class="skill-tags">
-                                <span class="tag tag-secondary">React.js</span>
-                                <span class="tag tag-secondary">Django</span>
-                                <span class="tag tag-secondary">SQLite</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">CNN-LSTM</span>
+                                <span class="tag">MFCC</span>
+                                <span class="tag">Deep Learning</span>
+                                <span class="tag">Biometrics</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Personal Project: MNIST -->
                     <div class="project-card">
                         <div class="project-content">
-                            <h3 class="project-title">MNIST Digit Recognizer</h3>
-                            <p class="project-period">May 2023 – Jun 2023</p>
+                            <h3 class="project-title">MXPERTZ – Lead Software Developer</h3>
+                            <p class="project-period">Jul 2023 – Jan 2024 | Indore</p>
                             <p class="project-description">
-                                Developed a machine learning pipeline from scratch and refined it using TensorFlow and
-                                Keras.
-                                Built activation layers, optimizers, and CNN architecture to achieve high accuracy on
-                                digit classification.
+                                Designed and deployed RESTful APIs with JWT authentication, secure OTP handling, and 
+                                role-based fund approval workflows. Optimized MS SQL database architecture up to 3NF, 
+                                improving scalability and query performance. Developed enterprise-grade modules using 
+                                ASP.NET, Flutter, MS SQL, and SSRS Reports, delivering reliable software solutions.
                             </p>
                             <div class="skill-tags">
-                                <span class="tag tag-secondary">TensorFlow</span>
-                                <span class="tag tag-secondary">NumPy</span>
-                                <span class="tag tag-secondary">CNN</span>
-                                <span class="tag tag-secondary">Keras</span>
+                                <span class="tag">ASP.NET</span>
+                                <span class="tag">Flutter</span>
+                                <span class="tag">MS SQL</span>
+                                <span class="tag">SSRS Reports</span>
+                                <span class="tag">JWT</span>
+                                <span class="tag">RESTful APIs</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Personal Project: Influencer Hub -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3 class="project-title">Influencer Hub</h3>
-                            <p class="project-period">Mar 2023 – Apr 2023</p>
-                            <p class="project-description">
-                                Created a full-stack application for influencer data analytics using Instagram APIs,
-                                enabling OTP-based authentication, data visualization, and performance tracking.
-                            </p>
-                            <div class="skill-tags">
-                                <span class="tag tag-secondary">Django REST</span>
-                                <span class="tag tag-secondary">React.js</span>
-                                <span class="tag tag-secondary">SQLite</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Academic Project Example (Optional) -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3 class="project-title">Academic Course Projects</h3>
-                            <p class="project-period">2024 – Present | NIT Warangal</p>
-                            <p class="project-description">
-                                Worked on algorithm-intensive and systems-focused projects as part of advanced
-                                coursework in Compiler Design, OS, and Cryptography. Emphasis on scalable code,
-                                evaluation metrics, and performance optimization.
-                            </p>
-                            <div class="skill-tags">
-                                <span class="tag tag-secondary">C++</span>
-                                <span class="tag tag-secondary">Java</span>
-                                <span class="tag tag-secondary">DBMS</span>
-                                <span class="tag tag-secondary">Cryptography</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
 
-
-            <!-- ===== EDUCATION SECTION ===== -->
             <section id="education" class="section">
                 <h2 class="section-title">Education</h2>
                 <div class="card" style="padding: var(--spacing-xl);">
-
-                    <!-- M.Tech Section -->
                     <div style="text-align: center; margin-bottom: var(--spacing-lg);">
-                        <h3
-                            style="color: var(--primary-color); font-size: var(--font-size-2xl); margin-bottom: var(--spacing-xs);">
+                        <h3 style="color: var(--primary-color); font-size: var(--font-size-2xl); margin-bottom: var(--spacing-xs);">
                             Master of Technology (M.Tech)
                         </h3>
                         <p style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--spacing-xs);">
@@ -311,29 +574,21 @@
                             2024 - 2026
                         </p>
                     </div>
-                    <div
-                        style="background: var(--bg-primary); padding: var(--spacing-md); border-radius: var(--border-radius); margin-bottom: var(--spacing-lg);">
-                        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--spacing-sm);">
-                            Pursuing advanced coursework in data mining, cryptography, and machine learning with a focus
-                            on AI systems development and academic research.
-                        </p>
+                    <div style="background: var(--bg-primary); padding: var(--spacing-md); border-radius: var(--border-radius); margin-bottom: var(--spacing-lg);">
                         <div style="display: flex; justify-content: center; gap: var(--spacing-sm); flex-wrap: wrap;">
-                            <span class="tag tag-primary">CGPA: 8.16</span>
-                            <span class="tag tag-primary">Research Focus: ML/NLP</span>
-                            <span class="tag tag-primary">Thesis: Deep Learning Systems</span>
+                            <span class="tag">CGPA: 7.95</span>
+                            <span class="tag">Research Focus: AI/ML</span>
+                            <span class="tag">Deep Learning Systems</span>
                         </div>
                     </div>
 
                     <hr style="border: 0; height: 1px; background: var(--accent-color); margin: var(--spacing-lg) 0;">
 
-                    <!-- B.Tech Section -->
                     <div style="text-align: center; margin-bottom: var(--spacing-md);">
-                        <h3
-                            style="color: var(--primary-color); font-size: var(--font-size-xl); margin-bottom: var(--spacing-xs);">
+                        <h3 style="color: var(--primary-color); font-size: var(--font-size-xl); margin-bottom: var(--spacing-xs);">
                             Bachelor of Technology (B.Tech)
                         </h3>
-                        <p
-                            style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-xs);">
+                        <p style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-xs);">
                             Computer Science and Engineering
                         </p>
                         <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">
@@ -343,88 +598,42 @@
                             2018 - 2022
                         </p>
                     </div>
-                    <div
-                        style="background: var(--bg-primary); padding: var(--spacing-md); border-radius: var(--border-radius); margin-bottom: var(--spacing-lg);">
-                        <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--spacing-sm);">
-                            Gained proficiency in core computer science subjects and project-based learning through
-                            real-world problem-solving and application development.
-                        </p>
+                    <div style="background: var(--bg-primary); padding: var(--spacing-md); border-radius: var(--border-radius);">
                         <div style="display: flex; justify-content: center; gap: var(--spacing-sm); flex-wrap: wrap;">
-                            <span class="tag tag-primary">CGPA: 7.51</span>
-                            <span class="tag tag-primary">Final Year Project: AI-Powered Apps</span>
+                            <span class="tag">CGPA: 7.51</span>
                         </div>
                     </div>
-
-
                 </div>
             </section>
 
-
-            <!-- ===== ACHIEVEMENTS SECTION ===== -->
             <section id="achievements" class="section">
-                <h2 class="section-title">Achievements & Certifications</h2>
+                <h2 class="section-title">Achievements</h2>
                 <div class="skills-grid">
-
-                    <!-- Academic Excellence -->
                     <div class="skill-category">
-                        <h3><i class="fas fa-trophy"></i> Academic Excellence</h3>
+                        <h3><i class="fas fa-trophy"></i> GATE Qualified</h3>
                         <ul class="achievement-list">
-                            <li>GATE 2024 Qualified with a score of 650+</li>
-                            <li>Top 1.37% nationwide among 1,00,000+ candidates</li>
+                            <li>Ranked in top 1.37% of candidates nationwide</li>
                             <li>Secured admission at NIT Warangal (CSE)</li>
-                            <li>Published Research Paper in NLP Systems</li>
-                            <li>Consistent Dean's List Scholar</li>
                         </ul>
                     </div>
 
-                    <!-- Competitive Programming -->
                     <div class="skill-category">
                         <h3><i class="fas fa-code"></i> Competitive Programming</h3>
                         <ul class="achievement-list">
-                            <li>Solved 500+ DSA Problems across various platforms</li>
-                            <li>Expertise in Recursion, Backtracking, and Divide & Conquer</li>
-                            <li>Proficient in Dynamic Programming and Greedy Algorithms</li>
-                            <li>Skilled in Graph Algorithms, Trees, and Binary Search</li>
+                            <li>Solved over 300+ DSA problems on various platforms</li>
+                            <li>Strong expertise in algorithms and data structures</li>
                         </ul>
                     </div>
-
-                    <!-- Certifications -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                        <ul class="achievement-list">
-                            <li>Python Programming Certification</li>
-                            <li>Java Programming Certification</li>
-                            <li>HTML & CSS Certification</li>
-                            <li>Coursera Specialization in Algorithms</li>
-                        </ul>
-                    </div>
-
-
-
-                    <!-- Leadership -->
-                    <div class="skill-category">
-                        <h3><i class="fas fa-chalkboard-teacher"></i> Mentorship & Leadership</h3>
-                        <ul class="achievement-list">
-                            <li>Mentor & Trainer at MXPERTZ – Guided freshers from scratch in Web Development</li>
-                            <li>Taught fundamentals of HTML, CSS, and JavaScript with hands-on sessions</li>
-                            <li>Assisted trainees in building and deploying their own personal portfolios</li>
-                        </ul>
-                    </div>
-
-
                 </div>
             </section>
 
-
-            <!-- ===== SOCIAL LINKS SECTION ===== -->
             <section id="contact" class="social-section">
                 <div class="container">
                     <h2 class="section-title" style="color: var(--text-white); margin-bottom: var(--spacing-xl);">
                         Let's Connect
                     </h2>
                     <div class="social-grid">
-                        <a href="https://www.linkedin.com/in/tanveer-sheikh-4a1696208" target="_blank"
-                            class="social-item">
+                        <a href="https://www.linkedin.com/in/tanveer-sheikh-4a1696208" target="_blank" class="social-item">
                             <i class="fab fa-linkedin fa-2x"></i>
                             <div>
                                 <h4>LinkedIn</h4>
@@ -442,17 +651,14 @@
                             <i class="fas fa-envelope fa-2x"></i>
                             <div>
                                 <h4>Email</h4>
-                                <p>Tanveer Sheikh</p>
+                                <p>Get in Touch</p>
                             </div>
                         </a>
                     </div>
-
                 </div>
             </section>
 
-            <!-- ===== FOOTER ===== -->
-            <footer
-                style="background: var(--bg-dark); color: var(--text-white); text-align: center; padding: var(--spacing-lg) 0;">
+            <footer>
                 <div class="container">
                     <p>&copy; 2025 Tanveer Sheikh. All rights reserved.</p>
                     <p style="margin-top: var(--spacing-xs); color: var(--text-light);">
@@ -460,48 +666,37 @@
                     </p>
                 </div>
             </footer>
+        </div>
+    </main>
 
-            <script>
-                // Smooth scrolling for navigation links
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        document.querySelector(this.getAttribute('href')).scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    });
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
+            });
+        });
 
-                // Update active navigation link on scroll
-                window.addEventListener('scroll', () => {
-                    let current = '';
-                    const sections = document.querySelectorAll('section');
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        if (pageYOffset >= sectionTop - 60) {
-                            current = section.getAttribute('id');
-                        }
-                    });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-                    document.querySelectorAll('.nav-links a').forEach(li => {
-                        li.classList.remove('active');
-                        if (li.getAttribute('href') === '#' + current) {
-                            li.classList.add('active');
-                        }
-                    });
-                });
- const bulb = document.getElementById("bulb");
-  const profile = document.getElementById("profileContainer");
-  const bulbRope = document.getElementById("bulbRope");
-  const wrapper = document.getElementById("profileWrapper");
-
-  bulb.addEventListener("click", () => {
-    profile.classList.toggle("lit");
-    bulb.classList.toggle("bulb-on");
-    bulbRope.classList.toggle("bulb-on");
-    wrapper.classList.toggle("lit"); // Triggers the glow
-  });
-            </script>
+            document.querySelectorAll('.nav-links a').forEach(li => {
+                li.classList.remove('active');
+                if (li.getAttribute('href') === '#' + current) {
+                    li.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
